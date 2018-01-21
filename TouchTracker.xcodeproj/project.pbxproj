@@ -12,6 +12,7 @@
 		F9061F2E20151FA8009FBFB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9061F2C20151FA8009FBFB8 /* Main.storyboard */; };
 		F9061F3020151FA8009FBFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9061F2F20151FA8009FBFB8 /* Assets.xcassets */; };
 		F9061F3320151FA8009FBFB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9061F3120151FA8009FBFB8 /* LaunchScreen.storyboard */; };
+		F9061F3B2015339D009FBFB8 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9061F3A2015339D009FBFB8 /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F9061F2F20151FA8009FBFB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9061F3220151FA8009FBFB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9061F3420151FA8009FBFB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9061F3A2015339D009FBFB8 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				F9061F2820151FA8009FBFB8 /* AppDelegate.swift */,
+				F9061F3A2015339D009FBFB8 /* DrawView.swift */,
 				F9061F2A20151FA8009FBFB8 /* ViewController.swift */,
 				F9061F2C20151FA8009FBFB8 /* Main.storyboard */,
 				F9061F2F20151FA8009FBFB8 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			files = (
 				F9061F2B20151FA8009FBFB8 /* ViewController.swift in Sources */,
 				F9061F2920151FA8009FBFB8 /* AppDelegate.swift in Sources */,
+				F9061F3B2015339D009FBFB8 /* DrawView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7Y36C7FES;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technobells.TouchTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7Y36C7FES;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technobells.TouchTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
