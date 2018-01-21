@@ -11,6 +11,8 @@ import UIKit
 class DrawView: UIView {
     var currentLine: Line?
     var finishedLines: [Line] = []
+    var lastPoint: CGPoint? = nil
+    var swiped: Bool = false
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -18,11 +20,6 @@ class DrawView: UIView {
         // Drawing code
         UIColor.black.setStroke()
         for line in finishedLines {
-            strokeLine(line: line)
-        }
-        if let line = currentLine {
-            // if line is currently being drawn, do it in green
-            UIColor.green.setStroke()
             strokeLine(line: line)
         }
     }
@@ -37,29 +34,30 @@ class DrawView: UIView {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        // Get location of the touch in view's coordinate system
-        let location = touch.location(in: self)
-        currentLine = Line(begin: location, end: location)
-        setNeedsDisplay()
+        swiped = false
+        if let touch = touches.first {
+            lastPoint = touch.location(in: self)
+            setNeedsDisplay()
+        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        let location = touch.location(in: self)
-        currentLine?.end = location
-        setNeedsDisplay()
+        swiped = true
+        if let touch = touches.first, let lastPoint = lastPoint {
+            let currentPoint = touch.location(in: self)
+//            strokeLine(line: Line(begin: lastPoint, end: currentPoint))
+            finishedLines.append(Line(begin: lastPoint, end: currentPoint))
+            self.lastPoint = currentPoint
+            setNeedsDisplay()
+        }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if var line = currentLine {
-            let touch = touches.first!
-            let location = touch.location(in: self)
-            line.end = location
-            finishedLines.append(line)
+        if !swiped {
+            // draw a single point
+            finishedLines.append(Line(begin: lastPoint!, end: lastPoint!))
+            setNeedsDisplay()
         }
-        currentLine = nil
-        setNeedsDisplay()
     }
 
 }
