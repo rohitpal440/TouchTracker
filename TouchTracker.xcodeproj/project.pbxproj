@@ -13,6 +13,7 @@
 		F9061F3020151FA8009FBFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9061F2F20151FA8009FBFB8 /* Assets.xcassets */; };
 		F9061F3320151FA8009FBFB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9061F3120151FA8009FBFB8 /* LaunchScreen.storyboard */; };
 		F9061F3B2015339D009FBFB8 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9061F3A2015339D009FBFB8 /* DrawView.swift */; };
+		F9061F3D20153441009FBFB8 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9061F3C20153441009FBFB8 /* Line.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F9061F3220151FA8009FBFB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9061F3420151FA8009FBFB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9061F3A2015339D009FBFB8 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		F9061F3C20153441009FBFB8 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				F9061F2820151FA8009FBFB8 /* AppDelegate.swift */,
 				F9061F3A2015339D009FBFB8 /* DrawView.swift */,
 				F9061F2A20151FA8009FBFB8 /* ViewController.swift */,
+				F9061F3C20153441009FBFB8 /* Line.swift */,
 				F9061F2C20151FA8009FBFB8 /* Main.storyboard */,
 				F9061F2F20151FA8009FBFB8 /* Assets.xcassets */,
 				F9061F3120151FA8009FBFB8 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9061F2B20151FA8009FBFB8 /* ViewController.swift in Sources */,
+				F9061F3D20153441009FBFB8 /* Line.swift in Sources */,
 				F9061F2920151FA8009FBFB8 /* AppDelegate.swift in Sources */,
 				F9061F3B2015339D009FBFB8 /* DrawView.swift in Sources */,
 			);
