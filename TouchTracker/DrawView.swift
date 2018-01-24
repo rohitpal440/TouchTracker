@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DrawView: UIView {
+class DrawView: UIView, UIGestureRecognizerDelegate {
     var currentLines: [NSValue: Line] = [:]
+    var moveRecognizer: UIPanGestureRecognizer!
     var finishedLines: [Line] = []
 
     var selectedLineIndex: Int? {
@@ -39,7 +40,23 @@ class DrawView: UIView {
         }
     }
 
-
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(clearScreen))
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        doubleTapRecognizer.delaysTouchesBegan = true
+        addGestureRecognizer(doubleTapRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(gestureRecognizer:)))
+        tapGestureRecognizer.delaysTouchesBegan = true
+        tapGestureRecognizer.require(toFail: doubleTapRecognizer)
+        addGestureRecognizer(tapGestureRecognizer)
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gestureRecognizer:)))
+        addGestureRecognizer(longPressGestureRecognizer)
+        moveRecognizer = UIPanGestureRecognizer(target: self, action: #selector(moveLine(gestureRecognizer:)))
+        moveRecognizer.cancelsTouchesInView = false
+        moveRecognizer.delegate = self
+        addGestureRecognizer(moveRecognizer)
+    }
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -54,6 +71,26 @@ class DrawView: UIView {
             // if line is currently being drawn, do it in green
             strokeLine(line: line)
         }
+        if let index = selectedLineIndex {
+            UIColor.red.setStroke()
+            let selectedLine = finishedLines[index]
+            strokeLine(line: selectedLine)
+        }
+    }
+
+    func indexOfLine(atPoint point: CGPoint) -> Int? {
+        for (index, line) in finishedLines.enumerated() {
+            let begin = line.begin
+            let end = line.end
+            for t in stride(from: CGFloat(0), to: 1.0, by: 0.05) {
+                let x = begin.x + ((end.x - begin.x) * t)
+                let  y = begin.y + ((end.y - begin.y) * t)
+                if hypot(x - point.x, y - point.y) < 20.0 {
+                    return index
+                }
+            }
+        }
+        return nil
     }
 
     func strokeLine(line: Line) {
